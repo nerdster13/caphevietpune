@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cà Phê VIET - Authentic Vietnamese Coffee House in Pune</title>
+    <link rel="icon" type="image/png" href="logo.png">
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -55,11 +56,19 @@
         }
 
         nav .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--maroon);
-            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            gap: 0;
+        }
+
+        nav .logo img {
+            height: 60px;
+            width: auto;
+            transition: transform 0.3s;
+        }
+
+        nav .logo img:hover {
+            transform: scale(1.05);
         }
 
         nav .nav-links {
@@ -104,6 +113,7 @@
             justify-content: center;
             overflow: hidden;
             background: linear-gradient(135deg, var(--cream) 0%, var(--warm-white) 100%);
+            
         }
 
         .hero::before {
@@ -458,13 +468,12 @@
             overflow: hidden;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
             height: 100%;
-            min-height: 400px;
+            min-height: 450px;
             background: var(--cream);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            color: var(--coffee);
+        }
+
+        .location-map iframe {
+            display: block;
         }
 
         /* Footer */
@@ -546,8 +555,8 @@
                 padding: 1rem 5%;
             }
 
-            nav .logo {
-                font-size: 1.4rem;
+            nav .logo img {
+                height: 45px;
             }
 
             nav .nav-links {
@@ -604,7 +613,9 @@
                 <>
                     <nav style={{ boxShadow: scrolled ? '0 4px 20px rgba(0,0,0,0.1)' : 'none' }}>
                         <div className="container">
-                            <div className="logo">Cà Phê VIET</div>
+                            <a href="#" className="logo" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
+                                <img src="logo.png" alt="Cà Phê VIET Logo" />
+                            </a>
                             <ul className="nav-links">
                                 <li><a href="#about" onClick={(e) => { e.preventDefault(); scrollToSection('about'); }}>About</a></li>
                                 <li><a href="#menu" onClick={(e) => { e.preventDefault(); scrollToSection('menu'); }}>Menu</a></li>
@@ -619,7 +630,7 @@
                             <div className="hero-tagline">From Vietnam With Love</div>
                             <h1>Cà Phê VIET</h1>
                             <p className="hero-subtitle">
-                                Pune's pioneering authentic Vietnamese specialty coffee house, bringing you the rich flavors and unique preparation methods of traditional Vietnamese coffee
+                                Pune's pioneering authentic Vietnamese specialty coffee house, bringing you the rich flavors and time-honored traditions of Vietnamese coffee culture
                             </p>
                             <a href="#menu" className="hero-cta" onClick={(e) => { e.preventDefault(); scrollToSection('menu'); }}>
                                 Explore Our Menu
@@ -642,7 +653,7 @@
                                     "Each cup is crafted with love, honoring centuries-old Vietnamese coffee traditions while creating a warm, welcoming space for our community."
                                 </div>
                                 <p>
-                                    From our signature Vietnamese drip coffee to classic Italian preparations, we cater to diverse palates. Our cozy space invites you to slow down, savor the moment, and experience coffee the Vietnamese way.
+                                    From our signature Vietnamese drip coffee to specialty preparations like egg cream coffee and salted cream coffee, we bring authentic Vietnamese coffee culture to Pune. Our cozy space invites you to slow down, savor the moment, and experience coffee the Vietnamese way.
                                 </p>
                             </div>
                             <div className="about-image">
@@ -656,7 +667,7 @@
                             <div className="section-label">Our Offerings</div>
                             <h2 className="section-title">Coffee & More</h2>
                             <p className="section-description">
-                                Authentic Vietnamese brews alongside classic favorites, all prepared with care and expertise
+                                Authentic Vietnamese coffee traditions, from classic Viet Black to our specialty egg cream and coconut preparations
                             </p>
                         </div>
                         <div className="menu-categories">
@@ -811,26 +822,16 @@
                                 </div>
                             </div>
                             <div className="location-map">
-                                <a 
-                                    href="https://www.google.com/maps/search/?api=1&query=Cafe+Viet+Karvenagar+Pune" 
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    style={{
-                                        display: 'block',
-                                        width: '100%',
-                                        height: '100%',
-                                        textDecoration: 'none',
-                                        color: 'var(--coffee)',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        flexDirection: 'column',
-                                        gap: '1rem'
-                                    }}
-                                >
-                                    <div style={{ fontSize: '3rem' }}>🗺️</div>
-                                    <div>Click to view on Google Maps</div>
-                                </a>
+                                <iframe 
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.781714285218!2d73.8256808!3d18.4935442!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf0062255fd3%3A0x41af7d4955a42600!2sC%C3%A0%20PH%C3%8A%20VIET%20(Vietnamese%20coffee%20house)!5e0!3m2!1sen!2sus!4v1769730037314!5m2!1sen!2sus"
+                                    width="100%" 
+                                    height="100%" 
+                                    style={{ border: 0, borderRadius: '8px' }}
+                                    allowFullScreen="" 
+                                    loading="lazy" 
+                                    referrerPolicy="no-referrer-when-downgrade"
+                                    title="Cà Phê VIET Location"
+                                ></iframe>
                             </div>
                         </div>
                     </section>
